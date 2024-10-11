@@ -1,0 +1,15 @@
+services:
+  lgarciaac-dev:
+    build:
+      dockerfile: ./Dockerfile
+    image: local/lgarciaac-workspace
+    command: /bin/bash
+    volumes:
+    - ${HOME:-}${USERPROFILE:-}/Projects/github:/src:rw,z
+    - ${HOME:-}${USERPROFILE:-}/.ssh:/home/dev/.ssh:ro,cached,z
+    - workspace-home-dir:/home/dev:delegated,z
+    working_dir: /home/dev
+    tty: true
+    stdin_open: true
+volumes:
+  workspace-home-dir:
