@@ -71,3 +71,12 @@ map <leader>te :tabedit <C-r>=escape(expand("%:p:h"), " ")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
+" Open ctrlp.vim plugin to quickly find a file or a buffer (<leader>j or <ctrl>f):
+" Quickly find and open a file in the CWD
+let g:ctrlp_map = '<C-f>'
+
+" Quickly find and open a recently opened file
+map <leader>f :MRU<CR>
+
+" Quickly find and open a buffer
+map <leader>b :CtrlPBuffer<cr>"

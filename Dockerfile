@@ -10,10 +10,14 @@ COPY configs/home .
 COPY configs/doozer .config
 COPY configs/system/brewkoji.conf /etc/koji.conf.d/brewkoji.conf
 
-# Install amix/vimrc configs and own vim configs
+# Install amix/vimrc configs and own vim configs. Also add fzf search to 
+# own installed plugins
 RUN git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime \
     && /bin/bash ~/.vim_runtime/install_awesome_vimrc.sh \
-    && mv my_configs.vim  ~/.vim_runtime/my_configs.vim
+    && mv my_configs.vim  ~/.vim_runtime/my_configs.vim \
+    && sudo dnf upgrade -y && dnf install -y fzf ripgrep \
+    && git clone https://github.com/junegunn/fzf.vim.git .vim_runtime/my_plugins/fzf.vim \
+    && git clone https://github.com/junegunn/fzf.git .vim_runtime/my_plugins/fzf
 
 # Install doozer
 RUN git clone https://github.com/openshift-eng/art-tools ${ART_TOOLS} \
