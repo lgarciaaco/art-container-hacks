@@ -7,9 +7,22 @@ services:
     volumes:
     - ${HOME:-}${USERPROFILE:-}/Projects/github:/src:rw,z
     - ${HOME:-}${USERPROFILE:-}/.ssh:/home/dev/.ssh:ro,cached,z
+    - ${HOME:-}${USERPROFILE:-}/.kube:/home/dev/.kube:ro,cached,z
+    - ${HOME:-}${USERPROFILE:-}/.docker:/home/dev/.docker:ro,cached,z
+    - /var/run/docker.sock:/var/run/docker.sock:z
     - workspace-home-dir:/home/dev:delegated,z
     working_dir: /home/dev
     tty: true
     stdin_open: true
+  lgarciaac-telemetry:
+    build: ./Dockerfile.telemetry
+    image: local/lgarciaac-workspace-telemetry
+    tty: true
+    stdin_open: true
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    ports:
+    - 8000:8000
+    - 4318:4318
 volumes:
   workspace-home-dir:

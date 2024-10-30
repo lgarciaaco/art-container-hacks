@@ -1,0 +1,4 @@
+source $HOME/.cargo/env
+
+[ -d /home/dev/art-venv ] || uv venv --python 3.11 --system-site-packages /home/dev/art-venv
+. /home/dev/art-venv/bin/activate

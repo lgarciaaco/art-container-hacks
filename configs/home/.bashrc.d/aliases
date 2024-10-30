@@ -1,0 +1,1 @@
+alias gen-payload='doozer --group=openshift-4.18 --arches x86_64 --images=openshift-enterprise-pod --enable-telemetry release:gen-payload'

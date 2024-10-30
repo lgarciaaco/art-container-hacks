@@ -1,11 +1,11 @@
-#Persistent working directory to use
+# Persistent working directory to use
 working_dir: /workspaces/doozer-working-dir
 
-#Git URL or File Path to build data
+# Git URL or File Path to build data
 data_path: https://github.com/openshift-eng/ocp-build-data.git
 
-#Sub-group directory or branch to pull build data
-# group: openshift-4.0
+# Sub-group directory or branch to pull build data
+group: openshift-4.18
 
-#Username for running rhpkg / brew
-# user: dev
+# Username for running rhpkg / brew
+user: lgarciaa
