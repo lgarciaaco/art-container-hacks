@@ -1,5 +1,6 @@
 FROM golang:1.23
 LABEL name="lgarciaac-workspace-telemetry"
+
 ENV OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 
 # Install otel-cli, a command-line tool for sending OpenTelemetry traces
@@ -8,5 +9,5 @@ RUN go install github.com/equinix-labs/otel-cli@latest \
     && go install github.com/CtrlSpice/otel-desktop-viewer@latest \
     && export PATH="$(go env GOPATH)/bin:$PATH"
 
-EXPOSE 8000 4318
+EXPOSE 8000 4317 4318
 ENTRYPOINT ["otel-desktop-viewer", "--host", "0.0.0.0"]

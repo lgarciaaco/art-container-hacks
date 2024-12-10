@@ -1,7 +1,7 @@
 FROM local/doozer-dev
 LABEL name="lgarciaac-workspace"
 
-ENV OTEL_EXPORTER_OTLP_ENDPOINT="http://host.docker.internal:4318"
+ENV OTEL_EXPORTER_OTLP_ENDPOINT="http://host.docker.internal:4317"
 ARG ART_TOOLS=/tmp/art-tools
 ARG BREW_LATEST=https://gist.githubusercontent.com/joepvd/f8079df5098608acf9021cae824a20ea/raw/31495635c9155814d8c457db313c19637524f942/brew-latest
 
@@ -22,7 +22,9 @@ RUN sudo dnf upgrade -y && sudo dnf install -y fzf ripgrep \
     && /bin/bash ~/.vim_runtime/install_awesome_vimrc.sh \
     && mv my_configs.vim  ~/.vim_runtime/my_configs.vim \
     && git clone https://github.com/junegunn/fzf.vim.git .vim_runtime/my_plugins/fzf.vim \
-    && git clone https://github.com/junegunn/fzf.git .vim_runtime/my_plugins/fzf
+    && git clone https://github.com/junegunn/fzf.git .vim_runtime/my_plugins/fzf \
+    && git clone https://github.com/vimwiki/vimwiki.git .vim_runtime/my_plugins/vimwiki \
+    && git clone https://github.com/michal-h21/vim-zettel.git .vim_runtime/my_plugins/vim-zettel
 
 # Install uv, doozer
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh && source ~/.bashrc \
