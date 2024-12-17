@@ -1,16 +1,13 @@
 let g:NERDTreeWinPos = "left"
 let g:indent_guides_enable_on_vim_startup = 1
-
-" Close current buffer
-map <leader>c :Bclose<cr>
+map <leader>nn :NERDTreeFromBookmark<Space>
 
 " Automatically cd when switching bookmarks
 let NERDTreeChDirMode=2
 
 " NERDTree related configuration
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+au BufEnter * if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree' && winnr('$') > 1 | b# | exe "normal! \<c-w>\<c-w>" | :blast | endif
 
 " Always open the bookmark table
 let NERDTreeShowBookmarks=1
@@ -30,6 +27,21 @@ nnoremap <silent> <Leader>H :Helptags<CR>
 nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
+
+" maps for fugitive
+nnoremap <Leader>gs :Git<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gb :Git branch -vv<CR>
+nnoremap <Leader>gh :Silent Glog<CR>
+nnoremap <Leader>gH :Silent Glog<CR>:set nofoldenable<CR>
+nnoremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gp :Git pull<CR>
+nnoremap <Leader>g- :Silent Git stash<CR>:e<CR>
+nnoremap <Leader>g+ :Silent Git stash pop<CR>:e<CR>
+
+" Close current buffer
+map <leader>c :Bclose<cr>
 
 " Trim white spaces automatically from all files when saving
 fun! TrimWhitespace()

@@ -15,7 +15,8 @@ services:
     tty: true
     stdin_open: true
   lgarciaac-telemetry:
-    build: ./Dockerfile.telemetry
+    build:
+      dockerfile: ./Dockerfile.telemetry
     image: local/lgarciaac-workspace-telemetry
     tty: true
     stdin_open: true
